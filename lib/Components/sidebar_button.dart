@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../Themes/constants.dart';
 
 class SidebarButton extends StatelessWidget {
-  final Function triggerAnimation;
+  final VoidCallback triggerAnimation;
   const SidebarButton({
     Key? key,
     required this.triggerAnimation,
@@ -12,7 +12,7 @@ class SidebarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      onPressed: triggerAnimation(),
+      onPressed: triggerAnimation,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       highlightColor: Colors.transparent,
       splashColor: Colors.black,

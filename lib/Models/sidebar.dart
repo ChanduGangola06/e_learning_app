@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SidebarItem {
@@ -11,10 +14,10 @@ class SidebarItem {
     required this.icon,
   });
 
-  static const sidebarItem = [
+  static var sidebarItem = [
     SidebarItem(
       title: 'Home',
-      background: LinearGradient(
+      background: const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
@@ -23,13 +26,13 @@ class SidebarItem {
         ],
       ),
       icon: Icon(
-        Icons.home,
+        Platform.isAndroid ? Icons.home : CupertinoIcons.home,
         color: Colors.white,
       ),
     ),
     SidebarItem(
       title: 'Courses',
-      background: LinearGradient(
+      background: const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
@@ -38,13 +41,13 @@ class SidebarItem {
         ],
       ),
       icon: Icon(
-        Icons.library_books,
+        Platform.isAndroid ? Icons.library_books : CupertinoIcons.book_circle,
         color: Colors.white,
       ),
     ),
     SidebarItem(
       title: 'Billing',
-      background: LinearGradient(
+      background: const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
@@ -53,13 +56,13 @@ class SidebarItem {
         ],
       ),
       icon: Icon(
-        Icons.credit_card,
+        Platform.isAndroid ? Icons.credit_card : CupertinoIcons.creditcard,
         color: Colors.white,
       ),
     ),
     SidebarItem(
       title: 'Settings',
-      background: LinearGradient(
+      background: const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
@@ -68,7 +71,7 @@ class SidebarItem {
         ],
       ),
       icon: Icon(
-        Icons.settings,
+        Platform.isAndroid ? Icons.settings : CupertinoIcons.settings_solid,
         color: Colors.white,
       ),
     ),

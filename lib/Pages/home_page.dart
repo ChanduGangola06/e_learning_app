@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late Animation<double> fadeAnimation;
   late AnimationController sidebarAnimationController;
 
+  var isHidden = true;
+
   @override
   void initState() {
     super.initState();
@@ -66,6 +68,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   children: [
                     HomeScreenNavBar(
                       triggerAnimation: () {
+                        setState(() {
+                          isHidden = !isHidden;
+                        });
                         sidebarAnimationController.forward();
                       },
                     ),
@@ -108,6 +113,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
             const ContinueWatchingPage(),
             IgnorePointer(
+              ignoring: isHidden,
               child: Stack(
                 children: [
                   FadeTransition(
@@ -119,17 +125,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         width: MediaQuery.of(context).size.width,
                       ),
                       onTap: () {
+                        setState(() {
+                          isHidden = !isHidden;
+                        });
                         sidebarAnimationController.reverse();
                       },
                     ),
                   ),
-                  // SlideTransition(
-                  //   position: sidebarAnimation,
-                  //   child: const SafeArea(
-                  //     bottom: false,
-                  //     child: SidebarPage(),
-                  //   ),
-                  // ),
+                  SlideTransition(
+                    position: sidebarAnimation,
+                    child: const SafeArea(
+                      bottom: false,
+                      child: SidebarPage(),
+                    ),
+                  ),
                 ],
               ),
             ),

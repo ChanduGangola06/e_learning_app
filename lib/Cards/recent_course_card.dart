@@ -36,27 +36,40 @@ class RecentCourseCard extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 32, left: 32, right: 32),
+                  padding: const EdgeInsets.only(
+                    top: 32,
+                    left: 32,
+                    right: 32,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        course.courseSubtitle,
-                        style: kCardSubtitleStyle,
+                      Hero(
+                        tag: course.courseSubtitle,
+                        child: Text(
+                          course.courseSubtitle,
+                          style: kCardSubtitleStyle,
+                        ),
                       ),
                       const SizedBox(height: 6),
-                      Text(
-                        course.courseTitle,
-                        style: kCardTitleStyle,
+                      Hero(
+                        tag: course.courseTitle,
+                        child: Text(
+                          course.courseTitle,
+                          style: kCardTitleStyle,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  child: Image.asset(
-                    // ignore: unnecessary_string_interpolations
-                    '${course.illustration}',
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: course.illustration,
+                    child: Image.asset(
+                      // ignore: unnecessary_string_interpolations
+                      '${course.illustration}',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
@@ -82,7 +95,10 @@ class RecentCourseCard extends StatelessWidget {
               ],
             ),
             padding: const EdgeInsets.all(12),
-            child: Image.asset('${course.logo}'),
+            child: Hero(
+              tag: course.logo!,
+              child: Image.asset('${course.logo}'),
+            ),
           ),
         ),
       ],

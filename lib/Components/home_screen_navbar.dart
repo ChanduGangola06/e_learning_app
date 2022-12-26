@@ -4,7 +4,7 @@ import 'package:e_learning_app/Themes/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenNavBar extends StatelessWidget {
-  final Function triggerAnimation;
+  final VoidCallback triggerAnimation;
   const HomeScreenNavBar({super.key, required this.triggerAnimation});
 
   @override

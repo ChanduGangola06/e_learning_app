@@ -8,6 +8,7 @@ class ExploreCourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: sized_box_for_whitespace
     return Container(
       height: 120,
       child: ListView.builder(

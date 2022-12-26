@@ -1,3 +1,4 @@
+import 'package:e_learning_app/Pages/course_page.dart';
 import 'package:flutter/material.dart';
 
 import '../Cards/recent_course_card.dart';
@@ -47,10 +48,23 @@ class _RecentCourseListState extends State<RecentCourseList> {
           child: PageView.builder(
             itemCount: recentCourses.length,
             itemBuilder: (context, index) {
-              return Opacity(
-                opacity: currentPage == index ? 1.0 : 0.5,
-                child: RecentCourseCard(
-                  course: recentCourses[index],
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CoursePage(
+                        course: recentCourses[index],
+                      ),
+                      fullscreenDialog: true,
+                    ),
+                  );
+                },
+                child: Opacity(
+                  opacity: currentPage == index ? 1.0 : 0.5,
+                  child: RecentCourseCard(
+                    course: recentCourses[index],
+                  ),
                 ),
               );
             },
@@ -62,6 +76,7 @@ class _RecentCourseListState extends State<RecentCourseList> {
             },
           ),
         ),
+        updateIndicators(),
       ],
     );
   }
