@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:e_learning_app/Lists/course_section_list.dart';
 import 'package:e_learning_app/Models/course.dart';
 import 'package:e_learning_app/Themes/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -68,7 +69,7 @@ class _CoursePageState extends State<CoursePage> {
           ],
           minHeight: 0.0,
           maxHeight: MediaQuery.of(context).size.height * 0.90,
-          panel: Container(),
+          panel: const CourseSectionPage(),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -378,6 +379,59 @@ class _CoursePageState extends State<CoursePage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CourseSectionPage extends StatelessWidget {
+  const CourseSectionPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: kBackgroundColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(34),
+        ),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(32),
+            decoration: const BoxDecoration(
+              color: kCardPopupBackgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(34),
+                bottomLeft: Radius.circular(34),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: kShadowColor,
+                  offset: Offset(0, 12),
+                  blurRadius: 32,
+                )
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Course Sections',
+                  style: kSubtitleStyle,
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  "12 Secctions",
+                  style: kSubtitleStyle,
+                ),
+              ],
+            ),
+          ),
+          const CourseSectionList(),
+          const SizedBox(height: 32),
+        ],
       ),
     );
   }

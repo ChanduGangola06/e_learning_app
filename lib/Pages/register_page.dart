@@ -1,3 +1,5 @@
+import 'package:e_learning_app/Utils/toast_message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +18,10 @@ class _RegisterPageState extends State<RegisterPage> {
   SMITrigger? successTrigger, failTrigger;
   SMIBool? isHandsUp, isChecking;
   SMINumber? numLook;
+
+  final formKey = GlobalKey<FormState>();
+
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   StateMachineController? stateMachineController;
   final TextEditingController _emailController = TextEditingController();
@@ -78,15 +84,34 @@ class _RegisterPageState extends State<RegisterPage> {
     numLook?.change(val.length.toDouble());
   }
 
-  void login() {
+  // void login() {
+  //   if (_emailController.text == "admin" &&
+  //       _passwordController.text == "admin") {
+  //     successTrigger?.fire();
+  //   } else {
+  //     failTrigger?.fire();
+  //   }
+  // }
+
+  void signup() {
     isChecking?.change(false);
     isHandsUp?.change(false);
-    if (_emailController.text == "admin" &&
-        _passwordController.text == "admin") {
-      successTrigger?.fire();
-    } else {
-      failTrigger?.fire();
-    }
+    auth
+        .createUserWithEmailAndPassword(
+          email: _emailController.text.toString(),
+          password: _passwordController.text.toString(),
+        )
+        .then((value) {})
+        .onError((error, stackTrace) {
+      Utils().toastMessage(error.toString());
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
   }
 
   @override
@@ -196,7 +221,11 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             const SizedBox(width: 12),
                             ElevatedButton(
-                              onPressed: login,
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  signup();
+                                }
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xffb04863),
                               ),

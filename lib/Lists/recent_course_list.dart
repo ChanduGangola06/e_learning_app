@@ -48,6 +48,7 @@ class _RecentCourseListState extends State<RecentCourseList> {
           child: PageView.builder(
             itemCount: recentCourses.length,
             itemBuilder: (context, index) {
+              
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -68,6 +69,7 @@ class _RecentCourseListState extends State<RecentCourseList> {
                 ),
               );
             },
+            
             controller: PageController(initialPage: 0, viewportFraction: 0.63),
             onPageChanged: (index) {
               setState(() {

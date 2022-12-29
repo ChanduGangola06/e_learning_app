@@ -1,5 +1,6 @@
 import 'package:e_learning_app/Components/search_field_widget.dart';
 import 'package:e_learning_app/Components/sidebar_button.dart';
+import 'package:e_learning_app/Pages/profile_page.dart';
 import 'package:e_learning_app/Themes/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +30,21 @@ class HomeScreenNavBar extends StatelessWidget {
                 // Navigator.of(context).push(
                 //     MaterialPageRoute(builder: (context) => ProfileScreen()));
               },
-              child: const CircleAvatar(
-                radius: 18.0,
-                backgroundImage: AssetImage('assets/images/profile.jpg'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
+                    ),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 18.0,
+                  backgroundImage: AssetImage(
+                    'assets/images/profile.jpg',
+                  ),
+                ),
               ),
             ),
           ],
