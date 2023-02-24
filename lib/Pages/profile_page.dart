@@ -1,9 +1,9 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'dart:io';
 
-import 'package:e_learning_app/Cards/completed_courses_card.dart';
 import 'package:e_learning_app/Components/certificate_viewer.dart';
 import 'package:e_learning_app/Lists/completed_courses_list.dart';
-import 'package:e_learning_app/Models/course.dart';
 import 'package:e_learning_app/Themes/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

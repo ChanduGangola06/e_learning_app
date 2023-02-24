@@ -1,3 +1,4 @@
+import 'package:e_learning_app/Pages/home_page.dart';
 import 'package:e_learning_app/Utils/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -105,6 +106,12 @@ class _RegisterPageState extends State<RegisterPage> {
         .onError((error, stackTrace) {
       Utils().toastMessage(error.toString());
     });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ),
+    );
   }
 
   @override

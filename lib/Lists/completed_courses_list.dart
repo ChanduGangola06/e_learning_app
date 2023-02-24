@@ -1,5 +1,4 @@
 import 'package:e_learning_app/Cards/completed_courses_card.dart';
-import 'package:e_learning_app/Cards/continue_watching_card.dart';
 import 'package:e_learning_app/Models/course.dart';
 import 'package:flutter/material.dart';
 

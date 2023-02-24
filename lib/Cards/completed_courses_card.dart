@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:e_learning_app/Models/course.dart';
 import 'package:e_learning_app/Themes/constants.dart';
 import 'package:flutter/material.dart';
